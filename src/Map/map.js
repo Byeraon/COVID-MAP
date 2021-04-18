@@ -9,10 +9,6 @@ export let Map = (props) => {
     
     let [countr, setCountr] = useState(0);
 
-    let vet = props.value;
-
-    console.log(vet);
-
     function CheckCountry(cls) {
         console.log(cls);
     }
@@ -23,14 +19,11 @@ export let Map = (props) => {
         CrossClick(true);
     }
     function DoThat2 (cls) {
-
         return function () {
             console.log(cls);
             CrossClick(false, cls);
         }
     }   
-
-
 
 
     let CrossClick = (v, cls) => {
@@ -67,7 +60,9 @@ export let Map = (props) => {
 							c0.267,0,0.532-0.101,0.735-0.304c0.406-0.406,0.406-1.064,0-1.469L11.469,10z"></path>
             </svg>
             <h1 class="teext" fontColor="black">{countr}</h1>
-            <Fetch2 day={countr}></Fetch2>
+            {(!countr != 0) ? <div></div> :
+            <Fetch2 change="true"  day={"https://api.covid19api.com/dayone/country/"+ countr +"/status/confirmed/live"}></Fetch2>}
+            
         </div>
         <div className={s.map}>
             <svg viewBox="0 0 1009 652" width="100%">

@@ -1,4 +1,4 @@
-import s from './mapelement.module.css'
+
 
 
 

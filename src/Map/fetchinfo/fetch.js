@@ -1,36 +1,40 @@
 import React, { useState, useEffect } from "react";
+import f from './fetchinfo.module.css';
 
-const useFetch = (url) => {
-  const [data, setData] = useState(0);
-  const [loading, setLoading] = useState(true);
-  
-  // Similar to componentDidMount and componentDidUpdate:
-  useEffect(async () => {
-    const response = await fetch(url);
-    const data = await response.json();
-
-
-    setData(data);
-    setLoading(false);
-
-  }, []);
-
-  return { data, loading };
-};
 
 
 
 export let Fetch2 = (props) => {
-    // const [ur, setUr] = useState(props.day);
+  
+
+
+  const useFetch = url => {
+    const [data, setData] = useState(0);
+    const [loading, setLoading] = useState(true);
     
   
-      let { data, loading } = useFetch(props.day);
+    
+ 
+    // Similar to componentDidMount and componentDidUpdate:
+    useEffect(async () => {
       
-//   setUr(prev => {return prev});
+      const response = await fetch(url);
+      const data = await response.json();
+     
+      setData(data);
+      setLoading(false);
+    
+    }, [url]);
+  
+    return { data, loading };
+  };
+
+  var { data, loading} = useFetch(props.day);
+    
   return (
       
     <div>
-      {(loading) ? <div>...loading</div> :  <div>{data[200].Cases}</div>  }  
+      {(loading) ? <div>...loading</div> :  <div className={f.FetchInfo} >{data[200].Cases}</div>  }  
       
     </div>
   );

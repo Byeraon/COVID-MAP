@@ -1,18 +1,15 @@
 import s from './map.module.css';
 import { MapElement } from './MapElement/mapelement';
-import '../InfoBlock/infoblock.css';
+//import f from './fetchinfo/fetchinfo.module.css';
 import { useState } from 'react/cjs/react.development';
 import { Fetch2 } from './fetchinfo/fetch';
-
+import '../InfoBlock/infoblock.css';
 
 export let Map = (props) => {
     
     let [countr, setCountr] = useState(0);
 
-    function CheckCountry(cls) {
-        console.log(cls);
-    }
-
+   
     
     function DoThat1() {
 
@@ -53,6 +50,9 @@ export let Map = (props) => {
 
     return (<div className={s.Top}>
         <div className="block_lefted" >
+            
+            
+
             <svg onClick={DoThat1} class="svg_icon_lefted" viewBox="0 0 20 20" height="40px" width="40px" >
                 <path fill="black" d="M11.469,10l7.08-7.08c0.406-0.406,0.406-1.064,0-1.469c-0.406-0.406-1.063-0.406-1.469,0L10,8.53l-7.081-7.08
 							c-0.406-0.406-1.064-0.406-1.469,0c-0.406,0.406-0.406,1.063,0,1.469L8.531,10L1.45,17.081c-0.406,0.406-0.406,1.064,0,1.469
@@ -61,7 +61,7 @@ export let Map = (props) => {
             </svg>
             <h1 class="teext" fontColor="black">{countr}</h1>
             {(!countr != 0) ? <div></div> :
-            <Fetch2 change="true"  day={"https://api.covid19api.com/dayone/country/"+ countr +"/status/confirmed/live"}></Fetch2>}
+            <Fetch2 change="true" day={"https://api.covid19api.com/dayone/country/"+ countr +"/status/confirmed/live"}></Fetch2>}
             
         </div>
         <div className={s.map}>

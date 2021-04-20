@@ -10,7 +10,7 @@ export let App = () => {
 
   let GiveTime = (value) => {
     setTimeline(value);
-    debugger;
+    
 }
   
 

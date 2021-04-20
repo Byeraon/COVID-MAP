@@ -30,22 +30,18 @@ export let Fetch2 = (props) => {
   };
 
   var { data, loading } = useFetch(props.day);
-  const [sum, setSum] = useState(0);
-
-  useEffect(() => {
-    
-    setSum(0);
-    for (let i = 0; i < data.length; i++) {
-      setSum(data[i].Confirmed + sum);
-      console.log('kek');
-    }
-
-  }, [data]);
-  debugger;
+  console.log(props.day);
+  
   return (
 
     <div>
-      {(loading) ? <div>...loading</div> : <div className={f.FetchInfo} >CONFIRMED: {sum}</div>}
+      {(loading) ? <div>...loading</div> : 
+      <div className={f.InfoDate}>
+      <div className={f.FetchInfo} >CONFIRMED: {data.reduce(function(sum, current) {return sum + current.Confirmed}, 0)}</div> 
+      <div className={f.FetchInfo} >DEATHS: {data.reduce(function(sum, current) {return sum + current.Deaths}, 0)}</div>
+      <div className={f.FetchInfo} >RECOVERED: {data.reduce(function(sum, current) {return sum + current.Recovered}, 0)}</div> 
+      <div className={f.FetchInfo} >ACTIVE: {data.reduce(function(sum, current) {return sum + current.Active}, 0)}</div>
+      </div>}
 
     </div>
   );

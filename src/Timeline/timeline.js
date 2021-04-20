@@ -3,7 +3,7 @@ import s from './timeline.module.css';
 import { Fetch } from '../script';
 import { useEffect, useState } from 'react';
 
-export let Timeline = () => {
+export let Timeline = (props) => {
 
     const useFetch = url => {
         const [data, setData] = useState(0);
@@ -46,10 +46,14 @@ export let Timeline = () => {
         }
 
     }
+
+    let GiveTime = (value) => {
+        props.givetime(value);
+    }
     return (
         <div className={s.backTimeLine}>
             <Line GoTimeLine={GoTimeLine}></Line>
-            <Fetch i={index} ></Fetch>
+            <Fetch i={index} givetime={GiveTime} ></Fetch>
             <CountDays updateData={updateData}></CountDays>
         </div>
     )

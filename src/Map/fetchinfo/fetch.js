@@ -37,10 +37,10 @@ export let Fetch2 = (props) => {
     <div>
       {(loading) ? <div>...loading</div> : 
       <div className={f.InfoDate}>
-      <div className={f.FetchInfo} >CONFIRMED: {data.reduce(function(sum, current) {return sum + current.Confirmed}, 0)}</div> 
-      <div className={f.FetchInfo} >DEATHS: {data.reduce(function(sum, current) {return sum + current.Deaths}, 0)}</div>
-      <div className={f.FetchInfo} >RECOVERED: {data.reduce(function(sum, current) {return sum + current.Recovered}, 0)}</div> 
-      <div className={f.FetchInfo} >ACTIVE: {data.reduce(function(sum, current) {return sum + current.Active}, 0)}</div>
+      <div className={f.FetchInfo} >CONFIRMED: {Math.round(data.reduce(function(sum, current) {if (current.Province == '') { return current.Confirmed} else {return sum} }, 0))}</div> 
+      <div className={f.FetchInfo} >DEATHS: {Math.round(data.reduce(function(sum, current) {return sum + current.Deaths}, 0))}</div>
+      <div className={f.FetchInfo} >RECOVERED: {Math.round(data.reduce(function(sum, current) {return sum + current.Recovered}, 0))}</div> 
+      <div className={f.FetchInfo} >ACTIVE: {Math.round(data.reduce(function(sum, current) {if (current.Province == '') { return current.Confirmed} else {return sum} }, 0)) - Math.round(data.reduce(function(sum, current) {return sum + current.Deaths}, 0)) - Math.round(data.reduce(function(sum, current) {return sum + current.Recovered}, 0))}</div>
       </div>}
 
     </div>

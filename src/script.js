@@ -19,7 +19,7 @@ const useFetch = url => {
 
 export let Fetch = (props) => {
   const { data, loading } = useFetch("https://api.covid19api.com/dayone/country/CH/status/confirmed");
-  if (data != null) { props.givetime(data[props.i].Date) }
+  if (data != null) { props.givetime(data[props.i].Date); props.givealldata(data)}
   return (
     
     <div>

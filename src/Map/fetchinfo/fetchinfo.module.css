@@ -6,6 +6,11 @@
 }
 
 .InfoDate {
-    margin-top: 2%;
-    text-align: left;
+    margin-top: 5%;
+}
+
+.InfoCountry {
+    padding-bottom: 6%;
+    text-align: center;
+    color: black;
 }

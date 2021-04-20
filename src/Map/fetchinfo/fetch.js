@@ -30,18 +30,21 @@ export let Fetch2 = (props) => {
   };
 
   var { data, loading } = useFetch(props.day);
-  console.log(props.day);
-  
+  console.log(data);
+  debugger;
   return (
 
     <div>
-      {(loading) ? <div>...loading</div> : 
-      <div className={f.InfoDate}>
-      <div className={f.FetchInfo} >CONFIRMED: {Math.round(data.reduce(function(sum, current) {if (current.Province == '') { return current.Confirmed} else {return sum} }, 0))}</div> 
-      <div className={f.FetchInfo} >DEATHS: {Math.round(data.reduce(function(sum, current) {return sum + current.Deaths}, 0))}</div>
-      <div className={f.FetchInfo} >RECOVERED: {Math.round(data.reduce(function(sum, current) {return sum + current.Recovered}, 0))}</div> 
-      <div className={f.FetchInfo} >ACTIVE: {Math.round(data.reduce(function(sum, current) {if (current.Province == '') { return current.Confirmed} else {return sum} }, 0)) - Math.round(data.reduce(function(sum, current) {return sum + current.Deaths}, 0)) - Math.round(data.reduce(function(sum, current) {return sum + current.Recovered}, 0))}</div>
-      </div>}
+      {(loading) ? <div>...loading</div> : (Array.isArray(data)) ?
+        <div>
+          <div className={f.InfoCountry}>{data[0].Country.toUpperCase()}</div>
+          <div className={f.InfoDate}>
+            <div className={f.FetchInfo} >CONFIRMED: {Math.round(data.reduce(function (sum, current) { if (current.Province == '') { return current.Confirmed } else { return sum } }, 0))}</div>
+            <div className={f.FetchInfo} >DEATHS: {Math.round(data.reduce(function (sum, current) { return sum + current.Deaths }, 0))}</div>
+            <div className={f.FetchInfo} >RECOVERED: {Math.round(data.reduce(function (sum, current) { return sum + current.Recovered }, 0))}</div>
+            <div className={f.FetchInfo} >ACTIVE: {Math.round(data.reduce(function (sum, current) { if (current.Province == '') { return current.Confirmed } else { return sum } }, 0)) - Math.round(data.reduce(function (sum, current) { return sum + current.Deaths }, 0)) - Math.round(data.reduce(function (sum, current) { return sum + current.Recovered }, 0))}</div>
+          </div>
+        </div> : (typeof data == "object") ? <div style={{ color: "red" }}>Too Many Requests!</div> : <div></div>}
 
     </div>
   );

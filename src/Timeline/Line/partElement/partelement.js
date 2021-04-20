@@ -6,6 +6,6 @@ export let PartEl = (props) => {
     
 
     return(
-        <div onClick={props.thego(props.time)} className={s.part_el}></div>
+        <div onClick={props.thego(props.time, props.ind)} className={s.part_el}></div>
     )
 }

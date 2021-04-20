@@ -6,13 +6,14 @@ export let Line = (props) => {
     let part = props.givealldata;
 
 
-    let Thego = (value) => {
-        return function() {
-            console.log(value);
+    
+    var MassParts = []; 
+    if (Array.isArray(part)) { 
+        
+        for (let i = 0; i < part.length; i++) {
+            MassParts.push(<PartEl ind = {i} thego={props.thego} time={part[i].Date}/>);
         }
     }
-   
-    if (Array.isArray(part)) { var MassParts = part.map((item) => { return <PartEl thego={Thego} time={item.Date}/>}); }
 
     return (
         <div>

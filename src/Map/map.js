@@ -61,7 +61,7 @@ export let Map = (props) => {
             </svg>
             <h1 class="teext" fontColor="black">{countr}</h1>
             {(!countr != 0) ? <div></div> :
-            <Fetch2 change="true" day={"https://api.covid19api.com/country/"+ countr + "?from="+ props.givetime +"&to="+ props.givetime.split('').splice(0,10).join('') + "T23:59:59Z"}></Fetch2>}
+            <Fetch2 day={"https://api.covid19api.com/country/"+ countr + "?from="+ props.givetime +"&to="+ props.givetime.split('').splice(0,10).join('') + "T23:59:59Z"}></Fetch2>}
             
         </div>
         <div className={s.map}>

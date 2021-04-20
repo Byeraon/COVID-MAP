@@ -14,3 +14,25 @@
     text-align: center;
     color: black;
 }
+
+.InfoCountry::selection {
+    background-color: red;
+}
+
+
+.blue::selection {
+    background-color: cyan;
+}
+
+.red::selection {
+    background-color: red;
+}
+
+.green::selection {
+    background-color: green;
+}
+
+.black::selection {
+    background-color: black;
+    color: white;
+}

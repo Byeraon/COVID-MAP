@@ -26,3 +26,7 @@ body {
     width: 100vw;
     margin-bottom: 10px;
   }
+  .svgbox {
+    display: flex;
+    justify-content: center;
+  }

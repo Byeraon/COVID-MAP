@@ -23,7 +23,7 @@ export let Fetch = (props) => {
   return (
     
     <div>
-    {loading ? <div>...loading</div> : <div style={{marginLeft: "auto", marginRight: "auto"}}>{data[props.i].Date.split('').splice(0,10).map(item => (item == '-') ? item = ' ' : item = item).join('')}</div>}  
+    {loading ? <div>...loading</div> : <div style={{marginLeft: "auto", marginRight: "auto"}}>{data[props.i].Date.split('').splice(0,10).map(item => (item == '-') ? item = ' ' : item = item).join('').split(' ').reverse().join(' ')}</div>}  
       
     </div>
   );

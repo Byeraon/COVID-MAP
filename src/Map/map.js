@@ -8,16 +8,18 @@ import '../InfoBlock/infoblock.css';
 export let Map = (props) => {
     
     let [countr, setCountr] = useState(0);
-
+    let [showmenu, setShow] = useState(false);
    
     
     function DoThat1() {
-
+        
+        setShow(!showmenu);
         CrossClick(true);
+        debugger;
     }
     function DoThat2 (cls) {
         return function () {
-            console.log(cls);
+            setShow(false);
             CrossClick(false, cls);
         }
     }   
@@ -34,6 +36,7 @@ export let Map = (props) => {
                     boxElement.style.padding = '5px';
                 });
                 setCountr(cls);
+                
             } else if (v == true) {
                 let boxElement = document.querySelector('.block_lefted');
                 let animation = boxElement.animate([
@@ -50,8 +53,6 @@ export let Map = (props) => {
 
     return (<div className={s.Top}>
         <div className="block_lefted" >
-            
-            
 
             <svg onClick={DoThat1} class="svg_icon_lefted" viewBox="0 0 20 20" height="40px" width="40px" >
                 <path fill="black" d="M11.469,10l7.08-7.08c0.406-0.406,0.406-1.064,0-1.469c-0.406-0.406-1.063-0.406-1.469,0L10,8.53l-7.081-7.08
@@ -60,6 +61,7 @@ export let Map = (props) => {
 							c0.267,0,0.532-0.101,0.735-0.304c0.406-0.406,0.406-1.064,0-1.469L11.469,10z"></path>
             </svg>
             <h1 class="teext" fontColor="black">{countr}</h1>
+             <img style={{marginLeft: "auto", marginRight: "auto"}}  height="64px" width="64px" src={"https://www.countryflags.io/" + countr + "/shiny/64.png"}></img>
             {(!countr != 0) ? <div></div> :
             <Fetch2 day={"https://api.covid19api.com/country/"+ countr + "?from="+ props.givetime +"&to="+ props.givetime.split('').splice(0,10).join('') + "T23:59:59Z"}></Fetch2>}
             

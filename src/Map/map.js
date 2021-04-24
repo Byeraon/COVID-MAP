@@ -7,7 +7,7 @@ import '../InfoBlock/infoblock.css';
 
 export let Map = (props) => {
     
-    let [countr, setCountr] = useState(0);
+    let [countr, setCountr] = useState("");
     let [showmenu, setShow] = useState(false);
    
     
@@ -15,7 +15,7 @@ export let Map = (props) => {
         
         setShow(!showmenu);
         CrossClick(true);
-        debugger;
+       
     }
     function DoThat2 (cls) {
         return function () {
@@ -34,10 +34,12 @@ export let Map = (props) => {
                 animation.addEventListener('finish', function () {
                     boxElement.style.width = '20%';
                     boxElement.style.padding = '5px';
+                    
                 });
                 setCountr(cls);
                 
             } else if (v == true) {
+                
                 let boxElement = document.querySelector('.block_lefted');
                 let animation = boxElement.animate([
                     { width: '0', padding: '0' }
@@ -45,7 +47,9 @@ export let Map = (props) => {
                 animation.addEventListener('finish', function () {
                     boxElement.style.width = '0';
                     boxElement.style.padding = '0';
+                  
                 });
+                setCountr("");
         }
     }
 
@@ -60,8 +64,8 @@ export let Map = (props) => {
 							c0.203,0.203,0.469,0.304,0.735,0.304c0.266,0,0.531-0.101,0.735-0.304L10,11.469l7.08,7.081c0.203,0.203,0.469,0.304,0.735,0.304
 							c0.267,0,0.532-0.101,0.735-0.304c0.406-0.406,0.406-1.064,0-1.469L11.469,10z"></path>
             </svg>
-            <h1 class="teext" fontColor="black">{countr}</h1>
-             <img style={{marginLeft: "auto", marginRight: "auto"}}  height="64px" width="64px" src={"https://www.countryflags.io/" + countr + "/shiny/64.png"}></img>
+            <h1  fontColor="black" width="inherit">{countr}</h1>
+             <div><img class="imgflag"  height="50px" width="50px" src={"https://purecatamphetamine.github.io/country-flag-icons/3x2/" + countr + ".svg "} ></img></div>
             {(!countr != 0) ? <div></div> :
             <Fetch2 day={"https://api.covid19api.com/country/"+ countr + "?from="+ props.givetime +"&to="+ props.givetime.split('').splice(0,10).join('') + "T23:59:59Z"}></Fetch2>}
             

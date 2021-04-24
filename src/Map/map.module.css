@@ -15,6 +15,7 @@ body {
     fill: deepskyblue;
   }
   .map {
+    margin-top: 3%;
     height: 80%;
     width: 100%;
     display: flex;

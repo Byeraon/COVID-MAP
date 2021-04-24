@@ -31,12 +31,13 @@ export let Fetch2 = (props) => {
 
   var { data, loading } = useFetch(props.day);
   
+  
   return (
 
     <div>
       {(loading) ? <div>...loading</div> : (Array.isArray(data)) ?
         <div>
-          <div className={f.InfoCountry}>{data[0].Country.toUpperCase()}</div> {console.log(data)}
+          <div className={f.InfoCountry}>{data[0].Country.toUpperCase()}</div> 
           <div className={f.InfoDate}>
             <div className={f.FetchInfo + ' ' + f.blue} >CONFIRMED: {Math.round(data.reduce(function (sum, current) { if (current.Province == '') { return current.Confirmed } else { return sum } }, 0))}</div>
             <div className={f.FetchInfo + ' ' + f.red} >DEATHS: {Math.round(data.reduce(function (sum, current) { return sum + current.Deaths }, 0))}</div>

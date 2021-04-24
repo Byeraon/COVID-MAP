@@ -31,9 +31,9 @@ export let Total = (props) => {
         <div>
           {(loading) ? <div>...loading</div> : 
           <div className={f.InfoDate}>
-          <div className={f.FetchInfo} >CONF: {data.total.today_confirmed} - </div>
-          <div className={f.FetchInfo} >- DEATHS: {data.total.today_deaths} -</div>
-          <div className={f.FetchInfo} >- REC: {data.total.today_recovered}</div>
+          <div className={f.FetchInfo, f.info} >CONF: {data.total.today_confirmed}   </div>
+          <div className={f.FetchInfo, f.info} >  DEATHS: {data.total.today_deaths}  </div>
+          <div className={f.FetchInfo, f.info} > REC: {data.total.today_recovered}</div>
           </div>}
     
         </div>
